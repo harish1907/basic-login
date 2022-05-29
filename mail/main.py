@@ -10,10 +10,7 @@ users={
     }
 }
 
-#only for developer
-@app.get('/')
-def user_list():
-    return users
+
 
 @app.get('/search')
 def search_username(username):
