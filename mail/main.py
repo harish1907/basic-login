@@ -5,7 +5,7 @@ from typing import Optional
 app =FastAPI()
 
 users={
-    'username12':{
+    1:{
         'mail':'harish19',
         'password':'secret21',
     }
@@ -24,11 +24,11 @@ def start_api():
     return {'welcome':'to fastapi.'}
 
 @app.get('/search/{ur_id}')
-def search_user(ur_id:str=Path(None, description='User id here.')):
+def search_user(ur_id:int=Path(None, description='User id here.')):
     return users[ur_id]
 
 @app.post('/registration/{ur_id}')
-def registration(ur_id:str, user:User):
+def registration(ur_id:int, user:User):
     if ur_id in users:
         return {'Error':'this id is already exist..'}
     else:
@@ -43,7 +43,7 @@ def login(mail, password):
         return users[i]
 
 @app.put('/update/{ur_id}')
-def update_Userid(ur_id : str , update: Update):
+def update_Userid(ur_id : int , update: Update):
     if ur_id not in users:
         return {'error':'no user exists'}
 
@@ -55,7 +55,7 @@ def update_Userid(ur_id : str , update: Update):
     return users[ur_id]
 
 @app.delete('/fordelete/{ur_id}')
-def delete_user(ur_id:str):
+def delete_user(ur_id:int):
     if ur_id not in users:
         return {'error':'no such user to delete..'}
     del users[ur_id]
