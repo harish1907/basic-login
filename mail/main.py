@@ -20,7 +20,8 @@ def search_username(username):
     if username not in users:
         return {'error':'this user is not exist.'}
     else:
-        return users[username]
+        a=users[username]['mail']
+        return {'user exist': 'this username using '+ a +' mail.'}
 
 @app.post('/registration/{username}')
 def registration(username,mail,password):
